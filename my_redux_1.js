@@ -17,5 +17,13 @@ const store = createStore( counter );
 
 console.log(store.getState()); // 0
 
-store.dispatch({ type: 'INCREMENT'});
-console.log(store.getState()); // 1
+// store.dispatch({ type: 'INCREMENT'});
+// console.log(store.getState()); // 1
+
+store.subscribe(() => {
+    document.body.innerText = store.getState();
+});
+
+document.addEventListener('click', () => {
+    store.dispatch({ type: 'INCREMENT'});
+});
